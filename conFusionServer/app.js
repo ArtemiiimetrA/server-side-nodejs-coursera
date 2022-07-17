@@ -7,6 +7,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate');
+const uploadRouter = require('./routes/uploadRouter');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -52,6 +53,7 @@ app.use(passport.initialize());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/imageUpload',uploadRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
